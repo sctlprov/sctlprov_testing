@@ -1,0 +1,6 @@
+*.sh
+src/results/*
+*.cmi
+*.cmo
+*.o
+run
