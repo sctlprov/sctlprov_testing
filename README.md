@@ -1,6 +1,10 @@
 # Testing program for SCTLProV
 
-This program can generate the result of SCTLProV on test cases automatically.
+This program can be used to automatically test the proving result of test cases (input files), and generate the test result in files. 
+The basic workflow of the testing program is as follows:
+1. For a set of given test cases (input files for SCTLProV), specify the standard answer (`true` or `false`) for the proving result of each test case in a file (see the explanation of the `-standard` argument below);
+2. Run the tesing program (also see the explanation below);
+3. After the testing process terminates, see the result file for detailed proving result for each test case (see the explanation below).
 
 ## How to compile
 
