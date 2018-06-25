@@ -1,6 +1,11 @@
 *.sh
 results/*
 *.cmi
+*.cmx
 *.cmo
 *.o
 run
+a.out
+lexer.ml
+parser.ml
+parser.mli

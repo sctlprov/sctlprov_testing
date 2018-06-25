@@ -20,6 +20,3 @@ clean:
 	rm -f parser.mli
 	rm -f parser.ml
 	rm -f *.bak
-
-clean-result:
-	rm -f results/result_*

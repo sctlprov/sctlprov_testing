@@ -57,14 +57,16 @@ let main () =
     (fun s -> printf "Unknown argument: %s\n" s; exit 1)
 		"Usage: run -exec <command> -timeout <timeout> -dir <targetdir> -surfix <surfix> -extra <filename> -standard <filename> [-extra-last]";
 	(* read the standard answer from file*)
-	let standard_in = open_in !standard in
-	try while true do
-		let s = input_line standard_in in
-		let ss = String.split_on_char ':' s in
-		let mname = String.trim (List.hd ss)
-		and manswer = bool_of_string (String.trim (List.nth ss 1)) in
-		Hashtbl.add correct mname manswer
-	done with _ -> ();
+	if !standard <> "" then begin
+		let standard_in = open_in !standard in
+		try while true do
+			let s = input_line standard_in in
+			let ss = String.split_on_char ':' s in
+			let mname = String.trim (List.hd ss)
+			and manswer = bool_of_string (String.trim (List.nth ss 1)) in
+			Hashtbl.add correct mname manswer
+		done with _ -> ()
+	end;
 	(* calculate the timeout seconds*)
 	let timeout_secs = float_of_int (calculate_timeout !timeout) in
   let extra_arguments = 
@@ -154,6 +156,8 @@ let main () =
 			let file = (List.nth !file_list (!index)) in
 			output_string out file; 
 			(*output the status of test case*)
+			if !standard = "" then
+				Hashtbl.clear result;
 			if Hashtbl.length result <> 0 then begin
 				if List.exists (fun f -> f=file) !error_cases || r.clock_time >= timeout_secs then
 						output_string out "\t\tNotSolvable"
