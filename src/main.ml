@@ -159,9 +159,9 @@ let main () =
 						output_string out "\t\tNotSolvable"
 				else begin
 					let mname = List.hd (String.split_on_char '.' file) in
-					if (Hashtbl.mem result mname) && (Hashtbl.find result mname) = (Hashtbl.find correct mname) then
+					if (Hashtbl.mem correct mname) && (Hashtbl.find result mname) = (Hashtbl.find correct mname) then
 						output_string out "\t\tPass       "
-					else if (Hashtbl.mem result mname) && (Hashtbl.find result mname) <> (Hashtbl.find correct mname) then
+					else if (Hashtbl.mem correct mname) && (Hashtbl.find result mname) <> (Hashtbl.find correct mname) then
 						output_string out "\t\tNotPass    "
 					else 
 						output_string out "\t\tNoAnswer   "
