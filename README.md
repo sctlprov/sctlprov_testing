@@ -99,7 +99,7 @@ For the file `result_<timestamp>_data`, each line of it has the following form
 <filename> <status> Time:<time> Memory:<memory>
 ```
 which is explained as follows.
-
+* `filename`: name of the input file (test case).
 * `status`: may be one of the following options: 
     - `NotSolvable`: the test case is not solvable, due to either timeout or out of memory;
     - `Pass`: result of the test case is equal to the standard answer;
